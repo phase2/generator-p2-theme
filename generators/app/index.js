@@ -51,6 +51,7 @@ module.exports = yeoman.Base.extend({
 
   configuring: function () {
     if (_.includes(options.themeFeatures, 'css')) {
+      config.css.enabled = true;
       config.css.src = [
         'scss/**/*.scss'
       ];
@@ -64,6 +65,7 @@ module.exports = yeoman.Base.extend({
     }
 
     if (_.includes(options.themeFeatures, 'js')) {
+      config.js.enabled = true;
       config.js.src = [
         'js/**/*.js'
       ];
@@ -72,6 +74,17 @@ module.exports = yeoman.Base.extend({
       });
     } else {
       config.js = {
+        enabled: false
+      }
+    }
+
+    if (_.includes(options.themeFeatures, 'pl')) {
+      config.pl.enabled = true;
+      this.composeWith('p2-theme:pl', {options: options}, {
+        local: path.resolve(__dirname, '../pl')
+      });
+    } else {
+      config.pl = {
         enabled: false
       }
     }
