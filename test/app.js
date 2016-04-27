@@ -13,7 +13,10 @@ describe('generator-p2-theme:app', function () {
   it('creates files', function () {
     assert.file([
       '.gitignore',
-      'bower.json'
+      'bower.json',
+      'gulpfile.js',
+      'package.json',
+      'README.md'
     ]);
   });
 });

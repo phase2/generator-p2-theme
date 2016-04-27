@@ -20,7 +20,7 @@ module.exports = yeoman.Base.extend({
     options = _.assign(options, this.options);
   },
 
- prompting: function () {
+  prompting: function () {
     var done = this.async();
     var prompts = [];
 
@@ -38,7 +38,6 @@ module.exports = yeoman.Base.extend({
     // this.composeWith('pattern-lab-starter:extras', {options: options}, {
     //   local: path.resolve(__dirname, '../extras')
     // });
-
   },
 
   writing: function () {
