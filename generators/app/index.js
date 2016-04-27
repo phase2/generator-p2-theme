@@ -64,12 +64,11 @@ module.exports = yeoman.Base.extend({
     );
 
     request('https://raw.githubusercontent.com/phase2/p2-theme-core/master/config.default.yml', function (err, response, body) {
-      if (!err && response.statusCode == 200 && body.length) {
+      if (!err && response.statusCode === 200 && body.length) {
         this.fs.write(this.destinationPath('config.yml'), body);
         done();
       }
     }.bind(this));
-
   },
 
   install: function () {
