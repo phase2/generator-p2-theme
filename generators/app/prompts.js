@@ -33,5 +33,29 @@ module.exports = [
   {
     name: 'projectDescription',
     message: 'Description of project?'
+  },
+  {
+    name: 'themeFeatures',
+    message: 'What features would you like enabled in the theme?',
+    type: 'checkbox',
+    choices: [
+      {
+        name: 'Scss Compiling',
+        value: 'css',
+        checked: true
+      }, {
+        name: 'JS Compiling with Babel',
+        value: 'js',
+        checked: true
+      }, {
+        name: 'Pattern Lab',
+        value: 'pl',
+        checked: true
+      }, {
+        name: 'Icon System (SVGs => Font Icons)',
+        value: 'icons',
+        checked: true
+      }
+    ]
   }
 ];

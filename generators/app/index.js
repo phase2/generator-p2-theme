@@ -16,9 +16,6 @@ module.exports = yeoman.Base.extend({
     request('https://raw.githubusercontent.com/phase2/p2-theme-core/master/config.default.yml', function (err, response, body) {
       if (!err && response.statusCode === 200 && body.length) {
         config = yaml.safeLoad(body);
-        config.css.src = [
-          'scss/**/*.scss'
-        ];
         done();
       }
     });
@@ -53,13 +50,31 @@ module.exports = yeoman.Base.extend({
   },
 
   configuring: function () {
-    this.composeWith('p2-theme:css', {options: options}, {
-      local: path.resolve(__dirname, '../css')
-    });
+    if (_.includes(options.themeFeatures, 'css')) {
+      config.css.src = [
+        'scss/**/*.scss'
+      ];
+      this.composeWith('p2-theme:css', {options: options}, {
+        local: path.resolve(__dirname, '../css')
+      });
+    } else {
+      config.css = {
+        enabled: false
+      };
+    }
 
-    this.composeWith('p2-theme:js', {options: options}, {
-      local: path.resolve(__dirname, '../js')
-    });
+    if (_.includes(options.themeFeatures, 'js')) {
+      config.js.src = [
+        'js/**/*.js'
+      ];
+      this.composeWith('p2-theme:js', {options: options}, {
+        local: path.resolve(__dirname, '../js')
+      });
+    } else {
+      config.js = {
+        enabled: false
+      }
+    }
   },
 
   writing: function () {
