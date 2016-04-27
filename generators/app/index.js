@@ -60,7 +60,22 @@ module.exports = yeoman.Base.extend({
   install: function () {
     if (options.installDeps) {
       console.log('Running "npm install"...');
-      // this.npmInstall();
+      this.npmInstall([
+        'bower',
+        'breakpoint-sass',
+        'gulp',
+        'gulp-help',
+        'js-yaml',
+        'lodash.merge',
+        'normalize.scss',
+        'p2-theme-core',
+        'semver',
+        'bourbon',
+        'babel-preset-es2015',
+        'singularitygs'
+      ], {
+        saveDev: true
+      });
       console.log('Running "composer install"...');
       // this.spawnCommandSync('composer', ['install'], {
       //   cwd: path.join(options.themePath, 'pattern-lab')
