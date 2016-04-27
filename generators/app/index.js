@@ -1,4 +1,5 @@
 'use strict';
+var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
@@ -35,9 +36,9 @@ module.exports = yeoman.Base.extend({
       done();
     });
 
-    // this.composeWith('pattern-lab-starter:extras', {options: options}, {
-    //   local: path.resolve(__dirname, '../extras')
-    // });
+    this.composeWith('p2-theme:css', {options: options}, {
+      local: path.resolve(__dirname, '../css')
+    });
   },
 
   writing: function () {
@@ -61,17 +62,13 @@ module.exports = yeoman.Base.extend({
       console.log('Running "npm install"...');
       this.npmInstall([
         'bower',
-        'breakpoint-sass',
         'gulp',
         'gulp-help',
         'js-yaml',
         'lodash.merge',
-        'normalize.scss',
         'p2-theme-core',
         'semver',
-        'bourbon',
-        'babel-preset-es2015',
-        'singularitygs'
+        'babel-preset-es2015'
       ], {
         saveDev: true
       });

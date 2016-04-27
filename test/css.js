@@ -12,7 +12,8 @@ describe('generator-p2-theme:css', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      'scss/style.scss',
+      '.sass-lint.yml'
     ]);
   });
 });

@@ -37,6 +37,7 @@ module.exports = [
   {
     name: 'installDeps',
     message: 'Want to install dependencies afterwards?',
-    type: 'confirm'
+    type: 'confirm',
+    default: false
   }
 ];

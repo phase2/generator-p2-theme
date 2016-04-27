@@ -1,41 +1,41 @@
 'use strict';
 var yeoman = require('yeoman-generator');
-var chalk = require('chalk');
-var yosay = require('yosay');
+var _ = require('lodash');
+var options = {};
 
 module.exports = yeoman.Base.extend({
 
-  prompting: function () {
-    var done = this.async();
-
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the legendary ' + chalk.red('generator-p2-theme') + ' generator!'
-    ));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someAnswer;
-
-      done();
-    }.bind(this));
+  initializing: function () {
+    options.themePath = '';
+    options = _.assign(options, this.options);
   },
 
   writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+    // Copy all non-dotfiles
+    this.fs.copyTpl(
+      this.templatePath('**/*'),
+      this.destinationRoot(),
+      options
+    );
+
+    // Copy all dotfiles
+    this.fs.copyTpl(
+      this.templatePath('.*'),
+      this.destinationRoot(),
+      options
     );
   },
 
   install: function () {
-    this.installDependencies();
+    if (options.installDeps) {
+      this.npmInstall([
+        'breakpoint-sass',
+        'normalize.scss',
+        'bourbon',
+        'singularitygs'
+      ], {
+        saveDev: true
+      });
+    }
   }
 });
