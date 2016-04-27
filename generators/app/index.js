@@ -58,7 +58,7 @@ module.exports = yeoman.Base.extend({
   },
 
   install: function () {
-    if (options.installDeps) {
+    if (!options.skipDeps) {// testers may enjoy `yo p2-theme --skipDeps` for speed
       console.log('Running "npm install"...');
       this.npmInstall([
         'bower',
@@ -72,7 +72,7 @@ module.exports = yeoman.Base.extend({
       ], {
         saveDev: true
       });
-      console.log('Running "composer install"...');
+      // console.log('Running "composer install"...');
       // this.spawnCommandSync('composer', ['install'], {
       //   cwd: path.join(options.themePath, 'pattern-lab')
       // });

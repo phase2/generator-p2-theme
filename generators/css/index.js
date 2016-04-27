@@ -27,7 +27,7 @@ module.exports = yeoman.Base.extend({
   },
 
   install: function () {
-    if (options.installDeps) {
+    if (!options.skipDeps) {
       this.npmInstall([
         'breakpoint-sass',
         'normalize.scss',
