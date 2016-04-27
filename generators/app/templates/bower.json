@@ -1,10 +1,7 @@
 {
-  "name": "pattern-lab-starter",
+  "name": "<%= themeName %>",
   "version": "0.0.0",
   "description": "Components for PL work via Bower",
-  "keywords": [
-    "js"
-  ],
   "license": "MIT",
   "private": true,
   "ignore": [
