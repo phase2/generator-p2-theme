@@ -12,7 +12,8 @@ describe('generator-p2-theme:app', function () {
 
   it('creates files', function () {
     assert.file([
-      '.gitignore'
+      '.gitignore',
+      'bower.json'
     ]);
   });
 });

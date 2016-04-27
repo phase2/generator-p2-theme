@@ -29,13 +29,20 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function () {
+    // Copy all non-dotfiles
     this.fs.copy(
-      this.templatePath('gitignore'),
-      this.destinationPath('.gitignore')
+      this.templatePath('**/*'),
+      this.destinationRoot()
+    );
+
+    // Copy all dotfiles
+    this.fs.copy(
+      this.templatePath('.*'),
+      this.destinationRoot()
     );
   },
 
   install: function () {
-    this.installDependencies();
+    // this.installDependencies();
   }
 });
