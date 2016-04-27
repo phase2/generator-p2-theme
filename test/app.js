@@ -12,7 +12,7 @@ describe('generator-p2-theme:app', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      '.gitignore'
     ]);
   });
 });
