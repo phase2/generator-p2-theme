@@ -1,6 +1,7 @@
 'use strict';
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var request = require('request');
 var chalk = require('chalk');
 var yosay = require('yosay');
 var myPrompts = require('./prompts.js');
@@ -46,6 +47,8 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function () {
+    var done = this.async();
+
     // Copy all non-dotfiles
     this.fs.copyTpl(
       this.templatePath('**/*'),
@@ -59,6 +62,14 @@ module.exports = yeoman.Base.extend({
       this.destinationRoot(),
       options
     );
+
+    request('https://raw.githubusercontent.com/phase2/p2-theme-core/master/config.default.yml', function (err, response, body) {
+      if (!err && response.statusCode == 200 && body.length) {
+        this.fs.write(this.destinationPath('config.yml'), body);
+        done();
+      }
+    }.bind(this));
+
   },
 
   install: function () {
