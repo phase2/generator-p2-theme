@@ -3,13 +3,26 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var request = require('request');
 var chalk = require('chalk');
+var yaml = require('js-yaml');
 var yosay = require('yosay');
 var myPrompts = require('./prompts.js');
 var _ = require('lodash');
 var options = {};
+var config = {};
 
 module.exports = yeoman.Base.extend({
   initializing: function () {
+    var done = this.async();
+    request('https://raw.githubusercontent.com/phase2/p2-theme-core/master/config.default.yml', function (err, response, body) {
+      if (!err && response.statusCode === 200 && body.length) {
+        config = yaml.safeLoad(body);
+        config.css.src = [
+          'scss/**/*.scss'
+        ];
+        done();
+      }
+    });
+
     this.pkg = require('../../package.json');
 
     if (!this.options.skipWelcome) {
@@ -37,6 +50,9 @@ module.exports = yeoman.Base.extend({
       done();
     });
 
+  },
+
+  configuring: function () {
     this.composeWith('p2-theme:css', {options: options}, {
       local: path.resolve(__dirname, '../css')
     });
@@ -47,8 +63,6 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: function () {
-    var done = this.async();
-
     // Copy all non-dotfiles
     this.fs.copyTpl(
       this.templatePath('**/*'),
@@ -63,12 +77,7 @@ module.exports = yeoman.Base.extend({
       options
     );
 
-    request('https://raw.githubusercontent.com/phase2/p2-theme-core/master/config.default.yml', function (err, response, body) {
-      if (!err && response.statusCode === 200 && body.length) {
-        this.fs.write(this.destinationPath('config.yml'), body);
-        done();
-      }
-    }.bind(this));
+    this.fs.write(this.destinationPath('config.yml'), yaml.safeDump(config));
   },
 
   install: function () {
