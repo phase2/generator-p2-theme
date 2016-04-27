@@ -39,6 +39,10 @@ module.exports = yeoman.Base.extend({
     this.composeWith('p2-theme:css', {options: options}, {
       local: path.resolve(__dirname, '../css')
     });
+
+    this.composeWith('p2-theme:js', {options: options}, {
+      local: path.resolve(__dirname, '../js')
+    });
   },
 
   writing: function () {
@@ -67,8 +71,7 @@ module.exports = yeoman.Base.extend({
         'js-yaml',
         'lodash.merge',
         'p2-theme-core',
-        'semver',
-        'babel-preset-es2015'
+        'semver'
       ], {
         saveDev: true
       });

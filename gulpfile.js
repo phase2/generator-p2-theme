@@ -9,11 +9,27 @@ var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 
 gulp.task('static', function () {
-  return gulp.src('**/*.js')
+  return gulp.src([
+    '**/*.js',
+    '!**/templates/**'
+  ])
     .pipe(excludeGitignore())
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
+});
+
+gulp.task('eslint-fix', function () {
+  return gulp.src([
+    '**/*.js',
+    '!**/templates/**'
+  ])
+    .pipe(excludeGitignore())
+    .pipe(eslint({
+      fix: true
+    }))
+    .pipe(eslint.format())
+    .pipe(gulp.dest(''));
 });
 
 gulp.task('nsp', function (cb) {
@@ -21,7 +37,10 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-  return gulp.src('generators/**/*.js')
+  return gulp.src([
+    'generators/**/*.js',
+    '!**/templates/**'
+  ])
     .pipe(excludeGitignore())
     .pipe(istanbul({
       includeUntested: true
@@ -45,7 +64,11 @@ gulp.task('test', ['pre-test'], function (cb) {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['generators/**/*.js', 'test/**'], ['test']);
+  gulp.watch([
+    'generators/**/*.js',
+    'test/**',
+    '!**/templates/**'
+  ], ['test']);
 });
 
 gulp.task('prepublish', ['nsp']);
