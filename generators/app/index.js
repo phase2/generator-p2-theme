@@ -79,12 +79,12 @@ module.exports = yeoman.Base.extend({
     }
 
     if (_.includes(options.themeFeatures, 'pl')) {
-      config.pl.enabled = true;
+      config.patternLab.enabled = true;
       this.composeWith('p2-theme:pl', {options: options}, {
         local: path.resolve(__dirname, '../pl')
       });
     } else {
-      config.pl = {
+      config.patternLab = {
         enabled: false
       }
     }
