@@ -88,6 +88,40 @@ module.exports = yeoman.Base.extend({
         enabled: false
       }
     }
+
+    if (_.includes(options.themeFeatures, 'icons')) {
+      config.icons.enabled = true;
+      config.icons.src = 'images/icons/src/*.svg';
+
+      if (_.includes(options.themeFeatures, 'css')) {
+        config.icons.templates.css = {
+          src: 'images/icons/templates/_icons.scss',
+          dest: 'scss/00-config/'
+        }
+      } else {
+        delete config.icons.templates.css;
+      }
+      
+      if (_.includes(options.themeFeatures, 'pl')) {
+        config.icons.templates.css = {
+          src: 'images/icons/templates/icons.mustache',
+          dest: 'templates/patterns-source/00-atoms/04-images/'
+        }
+      } else {
+        delete config.icons.templates.pl;
+      }
+
+      this.composeWith('p2-theme:icons', {
+        options: options,
+        config: config
+      }, {
+        local: path.resolve(__dirname, '../icons')
+      });
+    } else {
+      config.icons = {
+        enabled: false
+      }
+    }
   },
 
   writing: function () {
