@@ -85,7 +85,9 @@ module.exports = yeoman.Base.extend({
 
     if (_.includes(options.themeFeatures, 'pl')) {
       config.patternLab.enabled = true;
-      config.patternLab.engine = 'php-twig';
+      config.patternLab.src.root = 'pattern-lab';
+      config.browserSync.enabled = true;
+      config.browserSync.startPath = 'pattern-lab';
       this.composeWith('p2-theme:pl', {options: options}, {
         local: path.resolve(__dirname, '../pl')
       });
@@ -162,10 +164,6 @@ module.exports = yeoman.Base.extend({
       ], {
         saveDev: true
       });
-      // console.log('Running "composer install"...');
-      // this.spawnCommandSync('composer', ['install'], {
-      //   cwd: path.join(options.themePath, 'pattern-lab')
-      // });
     }
   }
 

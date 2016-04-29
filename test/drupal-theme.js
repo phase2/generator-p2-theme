@@ -4,7 +4,6 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('generator-p2-theme:drupal-theme', function () {
-
   describe('Drupal 7', function () {
     before(function (done) {
       helpers.run(path.join(__dirname, '../generators/drupal-theme'))
