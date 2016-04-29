@@ -5,37 +5,62 @@ var yosay = require('yosay');
 
 module.exports = yeoman.Base.extend({
 
-  prompting: function () {
-    var done = this.async();
-
-    // Have Yeoman greet the user.
-    this.log(yosay(
-      'Welcome to the unreal ' + chalk.red('generator-p2-theme') + ' generator!'
-    ));
-
-    var prompts = [{
-      type: 'confirm',
-      name: 'someAnswer',
-      message: 'Would you like to enable this option?',
-      default: true
-    }];
-
-    this.prompt(prompts, function (props) {
-      this.props = props;
-      // To access props later use this.props.someAnswer;
-
-      done();
-    }.bind(this));
-  },
-
   writing: function () {
-    this.fs.copy(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
-    );
-  },
+    if (this.options.drupalDistro === 'drupal') {
+      // Start Drupal 7
+      if (this.options.drupalDistroVersion === '7.x') {
+        this.fs.copyTpl(
+          this.templatePath('drupal-7.x/theme.info'),
+          this.destinationPath(this.options.themeName + '.info'),
+          this.options
+        );
+        this.fs.copyTpl(
+          this.templatePath('drupal-7.x/template.php'),
+          this.destinationPath('template.php'),
+          this.options
+        );
+        this.fs.copy(
+          this.templatePath('drupal-7.x/screenshot.png'),
+          this.destinationPath('screenshot.png')
+        );
+      }
+      // End Drupal 7
 
-  install: function () {
-    this.installDependencies();
+      // Start Drupal 8
+      if (this.options.drupalDistroVersion === '8.x') {
+        this.fs.copyTpl(
+          this.templatePath('drupal-8.x/theme.info.yml'),
+          this.destinationPath(this.options.themeName + '.info.yml'),
+          this.options
+        );
+        this.fs.copyTpl(
+          this.templatePath('drupal-8.x/theme.libraries.yml'),
+          this.destinationPath(this.options.themeName + '.libraries.yml'),
+          this.options
+        );
+        this.fs.copyTpl(
+          this.templatePath('drupal-8.x/theme.theme'),
+          this.destinationPath(this.options.themeName + '.theme'),
+          this.options
+        );
+        this.fs.copy(
+          this.templatePath('drupal-8.x/screenshot.png'),
+          this.destinationPath('screenshot.png')
+        );
+      }
+      // End Drupal 8
+    }
+    if (this.options.drupalDistro === 'openatrium') {
+      // Start OpenAtrium on Drupal 7
+      if (this.options.drupalDistroVersion === '7.x') {
+        this.fs.copyTpl(
+          this.templatePath('openatrium-7.x/theme.info'),
+          this.destinationPath(this.options.themeName + '.info'),
+          this.options
+        );
+      }
+      // End OpenAtrium on Drupal 7
+    }
   }
+
 });

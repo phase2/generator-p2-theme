@@ -17,7 +17,8 @@ module.exports = [
     default: 'drupal',
     choices: [
       'drupal',
-      'openatrium'
+      'openatrium',
+      'none'
     ]
   },
   {
@@ -25,6 +26,9 @@ module.exports = [
     message: 'What version of Drupal is installed?',
     type: 'list',
     default: '7.x',
+    when: function (response) {
+      return response.drupalDistro !== 'none';
+    },
     choices: [
       '7.x',
       '8.x'

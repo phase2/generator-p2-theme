@@ -77,6 +77,12 @@ module.exports = yeoman.Base.extend({
       };
     }
 
+    if (options.drupalDistro !== 'none') {
+      this.composeWith('p2-theme:drupal-theme', {options: options}, {
+        local: path.resolve(__dirname, '../drupal-theme')
+      });
+    }
+
     if (_.includes(options.themeFeatures, 'pl')) {
       config.patternLab.enabled = true;
       config.patternLab.engine = 'php-twig';
