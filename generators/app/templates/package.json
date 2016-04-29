@@ -4,12 +4,9 @@
   "description": "<%= projectDescription %>",
   "main": "gulpfile.js",
   "scripts": {
-    "prestart": "npm run checkDeps",
     "start": "gulp clean && gulp compile && gulp",
-    "precompile": "npm run checkDeps",
     "compile": "gulp clean && gulp compile",
     "test": "gulp validate",
-    "checkDeps": "node scripts/dependency-version-checker.js",
     "postinstall": "find node_modules/ -name \"*.info\" -type f -delete && bower install --allow-root"
   },
   "dependencies": {

@@ -46,7 +46,6 @@ module.exports = yeoman.Base.extend({
       options = _.assign(options, props);
       done();
     });
-
   },
 
   configuring: function () {
@@ -75,18 +74,19 @@ module.exports = yeoman.Base.extend({
     } else {
       config.js = {
         enabled: false
-      }
+      };
     }
 
     if (_.includes(options.themeFeatures, 'pl')) {
       config.patternLab.enabled = true;
+      config.patternLab.engine = 'php-twig';
       this.composeWith('p2-theme:pl', {options: options}, {
         local: path.resolve(__dirname, '../pl')
       });
     } else {
       config.patternLab = {
         enabled: false
-      }
+      };
     }
 
     if (_.includes(options.themeFeatures, 'icons')) {
@@ -97,16 +97,16 @@ module.exports = yeoman.Base.extend({
         config.icons.templates.css = {
           src: 'images/icons/templates/_icons.scss',
           dest: 'scss/00-config/'
-        }
+        };
       } else {
         delete config.icons.templates.css;
       }
-      
+
       if (_.includes(options.themeFeatures, 'pl')) {
         config.icons.templates.css = {
           src: 'images/icons/templates/icons.mustache',
           dest: 'templates/patterns-source/00-atoms/04-images/'
-        }
+        };
       } else {
         delete config.icons.templates.pl;
       }
@@ -120,7 +120,7 @@ module.exports = yeoman.Base.extend({
     } else {
       config.icons = {
         enabled: false
-      }
+      };
     }
   },
 
@@ -151,7 +151,7 @@ module.exports = yeoman.Base.extend({
         'gulp-help',
         'js-yaml',
         'lodash.merge',
-        'p2-theme-core',
+        'phase2/p2-theme-core#dev',
         'semver'
       ], {
         saveDev: true

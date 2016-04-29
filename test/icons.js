@@ -12,7 +12,7 @@ describe('generator-p2-theme:icons', function () {
 
   it('creates files', function () {
     assert.file([
-      'dummyfile.txt'
+      'src/close.svg'
     ]);
   });
 });
