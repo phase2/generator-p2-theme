@@ -159,7 +159,7 @@ module.exports = yeoman.Base.extend({
         'gulp-help',
         'js-yaml',
         'lodash.merge',
-        'phase2/p2-theme-core#dev',
+        'p2-theme-core',
         'semver'
       ], {
         saveDev: true

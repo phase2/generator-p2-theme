@@ -16,17 +16,9 @@ Then generate your new project:
 yo p2-theme
 ```
 
-## Getting To Know Yeoman
+## Core Configuration
 
- * Yeoman has a heart of gold.
- * Yeoman is a person with feelings and opinions, but is very easy to work with.
- * Yeoman can be too opinionated at times but is easily convinced not to be.
- * Feel free to [learn more about Yeoman](http://yeoman.io/).
-
-## License
-
-MIT © [Evan Lovely]()
-
+All core configuration is handled by [`p2-theme-core`](http://github.com/phase2/p2-theme-core).
 
 [npm-image]: https://badge.fury.io/js/generator-p2-theme.svg
 [npm-url]: https://npmjs.org/package/generator-p2-theme
