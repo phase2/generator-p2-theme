@@ -87,7 +87,7 @@ module.exports = yeoman.Base.extend({
       config.patternLab.enabled = true;
       config.patternLab.src.root = 'pattern-lab';
       config.browserSync.enabled = true;
-      config.browserSync.startPath = 'pattern-lab';
+      config.browserSync.startPath = 'pattern-lab/public';
       this.composeWith('p2-theme:pl', {options: options}, {
         local: path.resolve(__dirname, '../pl')
       });
