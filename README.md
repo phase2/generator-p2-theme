@@ -1,5 +1,11 @@
 # generator-p2-theme [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
 > Theme generator for Phase2
+
+**This is one of two pieces of our themes:**
+
+- [`generator-p2-theme`](https://github.com/phase2/generator-p2-theme) (aka `yo p2-theme`) (this repo) - this asks questions and then creates new files to be committed to start off a project's theme.
+- [`p2-theme-core`](https://github.com/phase2/p2-theme-core) - the core gulp tasks that handles most of the theme's automation.
 
 ## Installation
 
