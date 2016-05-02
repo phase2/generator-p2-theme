@@ -9,7 +9,7 @@ module.exports = yeoman.Base.extend({
       'create-project',
       'pattern-lab/edition-drupal-standard',
       'pattern-lab' // directory to place in
-    ]
+    ]);
   }
 
 });
