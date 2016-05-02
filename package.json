@@ -46,7 +46,8 @@
   },
   "repository": "Phase2/generator-p2-theme",
   "scripts": {
-    "prepublish": "gulp prepublish",
+    "prerelease": "gulp prepublish",
+    "release": "git push && git push --tags && npm publish",
     "test": "gulp"
   },
   "license": "MIT"
