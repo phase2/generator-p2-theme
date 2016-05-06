@@ -24,15 +24,6 @@ module.exports = yeoman.Base.extend({
       this.destinationRoot(),
       options
     );
-  },
-
-  install: function () {
-    if (!options.skipDeps) {
-      this.npmInstall([
-        'babel-preset-es2015'
-      ], {
-        saveDev: true
-      });
-    }
   }
+
 });

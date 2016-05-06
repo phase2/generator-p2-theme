@@ -151,19 +151,15 @@ module.exports = yeoman.Base.extend({
   },
 
   install: function () {
-    if (!options.skipDeps) {// testers may enjoy `yo p2-theme --skipDeps` for speed
-      console.log('Running "npm install"...');
-      this.npmInstall([
-        'bower',
-        'gulp',
-        'gulp-help',
-        'js-yaml',
-        'lodash.merge',
-        'p2-theme-core',
-        'semver'
-      ], {
-        saveDev: true
-      });
+    if (options['installDeps']) {
+      this.npmInstall();
+    }
+  },
+
+  end: function () {
+    if (!options['skipGoodbye']) {
+      this.log('\nAll done!\n'
+        + 'Run `' + chalk.red('npm start') + '` to begin!');
     }
   }
 

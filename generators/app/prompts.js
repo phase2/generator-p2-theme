@@ -61,5 +61,10 @@ module.exports = [
         checked: true
       }
     ]
+  },
+  {
+    name: 'installDeps',
+    message: 'Want to install dependencies afterwards?',
+    type: 'confirm'
   }
 ];

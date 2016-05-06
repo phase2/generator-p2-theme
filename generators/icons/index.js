@@ -8,9 +8,6 @@ module.exports = yeoman.Base.extend({
       this.templatePath(),
       this.destinationRoot('images/icons/')
     );
-  },
-
-  install: function () {
-
   }
+
 });
