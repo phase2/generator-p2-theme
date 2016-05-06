@@ -21,6 +21,7 @@
     "js-yaml": "^3.6.0",
     "lodash": "^4.11.1",
     "request": "^2.72.0",
+    "update-notifier": "^0.7.0",
     "yeoman-generator": "^0.22.0",
     "yosay": "^1.0.2"
   },

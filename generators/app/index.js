@@ -3,6 +3,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var request = require('request');
 var chalk = require('chalk');
+var updateNotifier = require('update-notifier');
 var yaml = require('js-yaml');
 var yosay = require('yosay');
 var myPrompts = require('./prompts.js');
@@ -13,6 +14,15 @@ var config = {};
 module.exports = yeoman.Base.extend({
   initializing: function () {
     var done = this.async();
+    this.pkg = require('../../package.json');
+
+    // check for package updates
+    updateNotifier({
+      this.pkg
+    }).notify({
+      defer: false
+    });
+
     request('https://raw.githubusercontent.com/phase2/p2-theme-core/master/config.default.yml', function (err, response, body) {
       if (!err && response.statusCode === 200 && body.length) {
         config = yaml.safeLoad(body);
@@ -20,7 +30,6 @@ module.exports = yeoman.Base.extend({
       }
     });
 
-    this.pkg = require('../../package.json');
 
     if (!this.options.skipWelcome) {
       // Have Yeoman greet the user.
@@ -33,6 +42,11 @@ module.exports = yeoman.Base.extend({
   },
 
   prompting: function () {
+    // console.log(1);
+    // notifier.notify();
+    // console.log(2);
+    // console.log(notifier.update);
+    // console.log(3);
     var done = this.async();
     var prompts = [];
 
