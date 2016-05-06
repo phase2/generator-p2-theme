@@ -8,17 +8,18 @@ var yaml = require('js-yaml');
 var yosay = require('yosay');
 var myPrompts = require('./prompts.js');
 var _ = require('lodash');
+var pkg = require('../../package.json');
 var options = {};
 var config = {};
 
 module.exports = yeoman.Base.extend({
   initializing: function () {
     var done = this.async();
-    this.pkg = require('../../package.json');
+    this.pkg = pkg;
 
     // check for package updates
     updateNotifier({
-      this.pkg
+      pkg
     }).notify({
       defer: false
     });
