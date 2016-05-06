@@ -31,7 +31,6 @@ module.exports = yeoman.Base.extend({
       }
     });
 
-
     if (!this.options.skipWelcome) {
       // Have Yeoman greet the user.
       this.log(yosay(
@@ -166,15 +165,15 @@ module.exports = yeoman.Base.extend({
   },
 
   install: function () {
-    if (options['installDeps']) {
+    if (options.installDeps) {
       this.npmInstall();
     }
   },
 
   end: function () {
-    if (!options['skipGoodbye']) {
-      this.log('\nAll done!\n'
-        + 'Run `' + chalk.red('npm start') + '` to begin!');
+    if (!options.skipGoodbye) {
+      this.log('\nAll done!\n' +
+        'Run `' + chalk.red('npm start') + '` to begin!');
     }
   }
 
