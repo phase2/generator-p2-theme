@@ -47,7 +47,7 @@
   },
   "repository": "Phase2/generator-p2-theme",
   "scripts": {
-    "prerelease": "gulp prepublish",
+    "prerelease": "gulp prepublish && gulp",
     "release": "git push && git push --tags && npm publish",
     "test": "gulp"
   },
