@@ -127,7 +127,7 @@ module.exports = yeoman.Base.extend({
       if (_.includes(options.themeFeatures, 'pl')) {
         config.icons.templates.demo = {
           src: 'images/icons/templates/icons.twig',
-          dest: 'pattern-lab/source/00-atoms/images/'
+          dest: 'pattern-lab/source/_patterns/00-atoms/images/'
         };
       } else {
         delete config.icons.templates.pl;
