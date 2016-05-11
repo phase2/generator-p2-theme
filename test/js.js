@@ -4,6 +4,7 @@ var assert = require('yeoman-assert');
 var helpers = require('yeoman-test');
 
 describe('generator-p2-theme:js', function () {
+  this.timeout(5000);
   before(function (done) {
     helpers.run(path.join(__dirname, '../generators/js'))
       .withPrompts({someAnswer: true})

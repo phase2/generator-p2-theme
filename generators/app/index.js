@@ -19,7 +19,7 @@ module.exports = yeoman.Base.extend({
 
     // check for package updates
     updateNotifier({
-      pkg
+      pkg: pkg
     }).notify({
       defer: false
     });
@@ -42,11 +42,6 @@ module.exports = yeoman.Base.extend({
   },
 
   prompting: function () {
-    // console.log(1);
-    // notifier.notify();
-    // console.log(2);
-    // console.log(notifier.update);
-    // console.log(3);
     var done = this.async();
     var prompts = [];
 
