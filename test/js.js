@@ -13,7 +13,9 @@ describe('generator-p2-theme:js', function () {
 
   it('creates files', function () {
     assert.file([
-      'js/script.js'
+      'js/script.js',
+      '.eslintrc',
+      '.babelrc'
     ]);
   });
 });
