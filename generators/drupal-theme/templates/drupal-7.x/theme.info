@@ -2,12 +2,8 @@ name = <%= themeName %>
 description = <%= projectDescription %>
 core = 7.x
 
-stylesheets[screen][] = css/style.css
+; inject:css
+; endinject
 
-;bower:css
-;endbower
-
-;bower:js
-;endbower
-
-scripts[] = js/script.js
+; inject:js
+; endinject
